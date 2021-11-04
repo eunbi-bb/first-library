@@ -1,29 +1,32 @@
 #include "libft.h"
-#include<stdio.h>
+
+char	check_char(char const *s1, char const *set)
+{
+	while (set[i] != '\0')
+	{
+		if (s1[i] == set[i])
+			return (1);
+		if (s1[i] != set[i])
+			return (0);
+	}
+	return (NULL);
+}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char			*p;
-	char			*str;
-	unsigned int	len;
+	char	*str;
+	int		i;
 
-	p = ft_strchr(s1, (int)set);
-	len = ft_strlen(s1) - ft_strlen(p);
-	while (*s1++ < len)
-	{
-		*str++ = *s1++;
-		ft_strdup(str);
-	}
-	return ((char *)str);
-}
-
-int	main(void)
-{
-	char	*s1;
-	char	*set;
-
-	s1 = "Hello, I'm Eunbi.";
-	set = ",";
-	printf("%s", ft_strtrim(s1, set));
-	return (0);
+	i = 0;
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
+	if (check_char(s1, set))
+		i++;
+	i = ft_strlen(s1) - 2;
+	if (check_char(s1, set))
+		i--;
+	str = ft_strdup(s1);
+	return (str);
 }
