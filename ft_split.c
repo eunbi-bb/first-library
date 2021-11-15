@@ -38,14 +38,18 @@ char	**ft_split(char const *s, char c)
 		while (*s && *s == c)
 			s++;
 		start = s;
-		len = 0;
+		
 		while (*s && *s != c)
 		{
 			s++;
 			len++;
 		}
+		
+		while (*s && *s != c)
+			s++;
+	
 		if (*(s - 1) != c)
-			str[i++] = ft_substr(start, 0, len);
+			str[i++] = ft_substr(start, 0, start - s);
 	}
 	str[i] = 0;
 	return (str);
