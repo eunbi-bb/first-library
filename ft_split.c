@@ -23,7 +23,6 @@ size_t	word_counter(char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	size_t		i;
-	size_t		len;
 	const char	*start;
 	char		**str;
 
@@ -38,18 +37,10 @@ char	**ft_split(char const *s, char c)
 		while (*s && *s == c)
 			s++;
 		start = s;
-		
-		while (*s && *s != c)
-		{
-			s++;
-			len++;
-		}
-		
 		while (*s && *s != c)
 			s++;
-	
 		if (*(s - 1) != c)
-			str[i++] = ft_substr(start, 0, start - s);
+			str[i++] = ft_substr(start, 0, s - start);
 	}
 	str[i] = 0;
 	return (str);
