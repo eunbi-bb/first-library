@@ -1,6 +1,6 @@
 #include "libft.h"
 
-size_t	word_counter(char const *s, char c)
+static size_t	word_counter(char const *s, char c)
 {
 	size_t	count;
 
